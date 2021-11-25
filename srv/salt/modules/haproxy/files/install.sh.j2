@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd /usr/src/haproxy-{{ pillar['haproxy_version'] }} && make clean && \
+make TARGET=linux-glibc \
+USE_OPENSSL=1  \
+USE_ZLIB=1  \
+USE_PCRE=1  \
+USE_SYSTEMD=1 && \
+make install PREFIX={{ pillar['haproxy_install_dir'] }}
